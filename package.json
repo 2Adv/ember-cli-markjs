@@ -13,6 +13,7 @@
   },
   "repository": "",
   "scripts": {
+    "rp": "npm version patch && npm publish && git push --follow-tags",
     "build": "ember build",
     "start": "ember server",
     "test": "ember try:each"

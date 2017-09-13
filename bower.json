@@ -1,4 +1,7 @@
 {
   "name": "ember-cli-markjs",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "mark.js": "^8.11.0"
+  }
 }
