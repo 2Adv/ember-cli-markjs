@@ -2,7 +2,7 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-cli-markjs'
+  name: 'ember-cli-markjs',
   
   isDevelopingAddon() {
     return true;
