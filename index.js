@@ -3,7 +3,8 @@
 
 module.exports = {
   name: 'ember-cli-markjs'
+  
   isDevelopingAddon() {
-  return true;
-}
+    return true;
+  }
 };
