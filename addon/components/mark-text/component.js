@@ -4,9 +4,10 @@ const { run, Component } = Ember;
 
 export default Ember.Component.extend({
   layout,
-  "element": "mark",
+  "context": "context",
   "className": "",
   "exclude": [],
+  "term":"",
   
   didInsertElement() {
     this._super(...arguments);
@@ -20,28 +21,25 @@ export default Ember.Component.extend({
 
   willDestroy() {
     this._super(...arguments);
-
-   /*
-    if (this.get('removeDropdownOnDestroy')) {
-      Ember.$('.daterangepicker').remove();
-    }*/
   },
 
   setupMark() {
      run.scheduleOnce('afterRender', this, function () {
-        this.unhighlight();
-        this.highlight(term, options);
+        this.highlight();
       });
-      if (this.$()) {
-        this.$(this.get('element')).mark("cris");
-      }
+      this.highlight();
   },
 
-  highlight(term, options) {
-      debugger
-      if (this.$()) {
-        this.$(this.get('element')).mark("cris");
-      }
+  highlight() {
+    if (this.$()) {
+      let ctx = Ember.$(this.get('context'));
+      let keyword= this.get("term");
+      ctx.unmark({
+        done: function() {
+          ctx.mark(keyword);
+        }
+      });
+    }
   }
 
 });
