@@ -3,7 +3,7 @@ import layout from './template';
 const { run, Component } = Ember;
 
 export default Ember.Component.extend({
-  layout
+  layout,
   "element": "mark",
   "className": "",
   "exclude": [],
@@ -35,7 +35,6 @@ export default Ember.Component.extend({
       if (this.$()) {
         this.$(this.get('element')).mark("cris");
       }
-    }
   },
 
   highlight(term, options) {
@@ -43,6 +42,6 @@ export default Ember.Component.extend({
       if (this.$()) {
         this.$(this.get('element')).mark("cris");
       }
-    }
-  },
+  }
+
 });

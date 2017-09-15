@@ -12,4 +12,8 @@ module.exports = {
   // afterInstall: function(options) {
   //   // Perform extra work here.
   // }
+   afterInstall: function () {
+    return this.addBowerPackageToProject('mark.js', '^8.11.0');
+  }
+
 };
