@@ -8,6 +8,7 @@ export default Ember.Component.extend({
   "className": "",
   "exclude": [],
   "term":"",
+  "isVisible":true,
   
   didInsertElement() {
     this._super(...arguments);
@@ -21,24 +22,37 @@ export default Ember.Component.extend({
 
   willDestroy() {
     this._super(...arguments);
+    run.cancel(this._setupTimer);
+  },
+
+  _setupMark() {
+    this.highlight();
   },
 
   setupMark() {
-     run.scheduleOnce('afterRender', this, function () {
-        this.highlight();
-      });
-      this.highlight();
+    run.cancel(this._setupTimer);
+    this._setupTimer = run.scheduleOnce('afterRender', this, this._setupMark);
+  },
+
+  _highlight() {
+    if (!this.$()) return;
+    let keyword= this.get("term");
+    if (keyword ==null)return;
+    let ctx = Ember.$(this.get('context'));
+    let tet= this;
+    ctx.unmark({
+      done: function() {
+        ctx.mark(keyword,
+          {"className": tet.get("className")}
+        );
+      }
+    });
   },
 
   highlight() {
-    if (this.$()) {
-      let ctx = Ember.$(this.get('context'));
-      let keyword= this.get("term");
-      ctx.unmark({
-        done: function() {
-          ctx.mark(keyword);
-        }
-      });
+    let isVisible = this.get('isVisible')
+    if(isVisible){
+     run.later(this,this._highlight, 1000);
     }
   }
 
