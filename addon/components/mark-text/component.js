@@ -40,13 +40,11 @@ export default Ember.Component.extend({
     if (keyword ==null)return;
     let ctx = Ember.$(this.get('context'));
     let tet= this;
-    ctx.unmark({
-      done: function() {
-        ctx.mark(keyword,
-          {"className": tet.get("className")}
-        );
+    ctx.unmark().mark(keyword,
+      {"className": tet.get("className"),
+        "acrossElements": true
       }
-    });
+    );
   },
 
   highlight() {
