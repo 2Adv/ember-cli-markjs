@@ -6,12 +6,15 @@
     "ember-addon"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "2ADV",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/2Adv/ember-cli-markjs"
+  },
   "scripts": {
     "rp": "npm version patch && npm publish && git push --follow-tags",
     "build": "ember build",
